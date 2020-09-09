@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableView.ListTreeController">
+   <children>
+      <MenuBar layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="818.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Datei">
+            <items>
+              <MenuItem fx:id="openFileMenuItem" mnemonicParsing="false" onAction="#openFile" text="Öffnen" />
+                  <MenuItem fx:id="saveFileMenuItem" mnemonicParsing="false" onAction="#saveFile" text="Speichern..." />
+                  <MenuItem fx:id="saveAsFileMenuItem" mnemonicParsing="false" onAction="#saveAsFile" text="Speichern unter" />
+                  <MenuItem fx:id="newFileMenuItem" mnemonicParsing="false" onAction="#newFile" text="Neue Datei erzeugen" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TableView fx:id="table" layoutX="14.0" layoutY="39.0" prefHeight="253.0" prefWidth="818.0">
+        <columns>
+          <TableColumn fx:id="idColumn" prefWidth="68.0" text="ID">
+          	<cellValueFactory>
+						<PropertyValueFactory property="id" />
+					</cellValueFactory>
+			</TableColumn>
+            <TableColumn fx:id="nameColumn" prefWidth="145.0" text="Name">
+             <cellValueFactory>
+						<PropertyValueFactory property="name" />
+					</cellValueFactory>
+			</TableColumn>
+            <TableColumn fx:id="treeSpeciesColumn" prefWidth="132.0" text="Baumart"> <cellValueFactory>
+						<PropertyValueFactory property="diameter" />
+					</cellValueFactory>
+			</TableColumn>
+          <TableColumn fx:id="diameterColumn" prefWidth="111.0" text="Durchmesser (cm)">
+          <cellValueFactory>
+						<PropertyValueFactory property="diameter" />
+					</cellValueFactory>
+			</TableColumn>
+           
+            <TableColumn fx:id="hightColumn" prefWidth="132.0" text="Höhe (m)">
+          	  <cellValueFactory>
+				<PropertyValueFactory property="hight" />
+				</cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="isEverGreenColumn" prefWidth="122.0" text="Immer grün?" />
+            <TableColumn fx:id="choose" prefWidth="122.0" text="auswählen">
+            <cellValueFactory>
+				<PropertyValueFactory property="choos" />
+				</cellValueFactory>
+            </TableColumn>
+            </columns>
+      </TableView>
+      <Button fx:id="addTreeButton" layoutX="27.0" layoutY="321.0" mnemonicParsing="false" onAction="#addTreeViewSwap" text="Baum zur Baumschule hinzufügen" />
+      <Button fx:id="deleteTreeButton" layoutX="304.0" layoutY="321.0" mnemonicParsing="false" onAction="#deleteTree" text="Baum entfernen" />
+      <Label fx:id="errorMessageLabel" layoutX="35.0" layoutY="360.0" prefHeight="25.0" prefWidth="516.0" textFill="RED" />
+   </children>
+</Pane>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TableView.AddTreeController">
+   <children>
+      <Label layoutX="23.0" layoutY="14.0" prefHeight="29.0" prefWidth="514.0" text="Baumschule Oberholz Mitglieder verwalten">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="184.0" prefHeight="17.0" prefWidth="54.0" text="Baumart" />
+      <Label layoutX="23.0" layoutY="63.0" text="Name" />
+      <TextField fx:id="nameTF" layoutX="159.0" layoutY="59.0" />
+      <Label layoutX="20.0" layoutY="100.0" text="Durchmesser (cm)" />
+      <TextField fx:id="diameterTF" layoutX="159.0" layoutY="96.0" />
+      <Label layoutX="24.0" layoutY="140.0" text="Höhe" />
+      <TextField fx:id="hightTF" layoutX="159.0" layoutY="136.0" />
+      <Label layoutX="21.0" layoutY="232.0" text="Immer grün?" />
+      <CheckBox fx:id="everGreenYes" layoutX="158.0" layoutY="232.0" mnemonicParsing="false" />
+      <Button fx:id="addTreeButton" layoutX="38.0" layoutY="321.0" mnemonicParsing="false" onAction="#createTree" text="Baum zur Baumschule hinzufügen" />
+      <Button layoutX="308.0" layoutY="321.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="150.0" text="Liste ansehen" />
+      <Label layoutX="383.0" layoutY="63.0" prefHeight="17.0" prefWidth="125.0" text="Identification Number" />
+      <Label fx:id="IDlabel" layoutX="523.0" layoutY="63.0" text="ID" />
+      <ImageView fx:id="treeImage" fitHeight="150.0" fitWidth="200.0" layoutX="358.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" />
+      <ComboBox fx:id="treeSpeciesCB" layoutX="158.0" layoutY="180.0" prefWidth="150.0" promptText="Baumart auswählen" />
+      <Label fx:id="msgLabel" layoutX="41.0" layoutY="281.0" prefHeight="17.0" prefWidth="423.0" textFill="#15721b" />
+      <Label fx:id="errorLabel" layoutX="41.0" layoutY="281.0" prefHeight="17.0" prefWidth="423.0" textFill="#f80000" />
+   </children>
+</Pane>
