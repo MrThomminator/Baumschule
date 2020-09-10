@@ -13,22 +13,35 @@ public class Tree implements Serializable {
 	private double hight;
 	private String treeSpecies;
 	private Boolean isEverGreen;
-	private int id = 0;
+	private int id;
 	private static int nID;
 	
+	Model model = Model.getInstance();
 	
 
 
 	public Tree(String name, double diameter, double hight, String treeSpecies, Boolean isEverGreen) {
+		
+	for(Tree tree : model.getTrees()) {
+		if(tree.getId() > nID) {
+			nID = tree.getId();
+		}
+	}
+		
 	this.id = ++nID;
 	this.name = name;
 	this.diameter = diameter;
 	this.hight = hight;
 	this.treeSpecies = treeSpecies;
 	this.isEverGreen = isEverGreen;
+	
+	
 }
 
-		
+	
+	
+	
+	
 	/*
 	 * Getters and Setters
 	 */
