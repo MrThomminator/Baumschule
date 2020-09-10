@@ -45,7 +45,7 @@ public class AddTreeController implements Initializable{
 	
 	
 	String treeSpecies;
-	
+
 	
 	@FXML
 	Label msgLabel;
@@ -73,9 +73,10 @@ public class AddTreeController implements Initializable{
 		Model model = Model.getInstance();
 		errorLabel.setText("");
 		msgLabel.setText("");
-
+	
+			
 		try {
-
+			
 			System.out.println("name: " + nameTF.getText());
 			System.out.println("Durchmesser: " + Double.valueOf(diameterTF.getText()));
 			System.out.println("höhe: " + Double.valueOf(hightTF.getText()));

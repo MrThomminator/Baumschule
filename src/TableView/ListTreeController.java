@@ -1,16 +1,12 @@
 package TableView;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,6 +24,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -134,6 +131,15 @@ public class ListTreeController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+//		idColumn.setCellValueFactory(
+//				new Callback<TableColumn.CellDataFeatures<Tree, Integer>, ObservableValue<Integer>>() {
+//
+//					public ObservableValue<Integer> call(CellDataFeatures<Tree, Integer> param) {
+//						SimpleIntegerProperty integerProperty = new SimpleIntegerProperty( param.getValue().getnID());
+//						return integerProperty;
+//					}
+//				});
+//		
 		/*
 		 * ComboBox in Tabelle anzeigen und wert reinschreiben.
 		 */

@@ -13,11 +13,14 @@ public class Tree implements Serializable {
 	private double hight;
 	private String treeSpecies;
 	private Boolean isEverGreen;
-	private static int id = 0;
+	private int id = 0;
+	private static int nID;
 	
+	
+
+
 	public Tree(String name, double diameter, double hight, String treeSpecies, Boolean isEverGreen) {
-	id++;
-	Tree.id = id;
+	this.id = ++nID;
 	this.name = name;
 	this.diameter = diameter;
 	this.hight = hight;
@@ -30,6 +33,26 @@ public class Tree implements Serializable {
 	 * Getters and Setters
 	 */
 	
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public int getnID() {
+		return nID;
+	}
+
+
+	public void setnID(int nID) {
+		this.nID = nID;
+	}
+
+
 	public String getName() {
 		return name;
 	}
@@ -69,12 +92,6 @@ public class Tree implements Serializable {
 	public void setIsEverGreen(Boolean isEverGreen) {
 		this.isEverGreen = isEverGreen;
 	}
+	
 
-	public static int getId() {
-		return id;
-	}
-
-	public static void setId(int id) {
-		Tree.id = id;
-	}
 }
