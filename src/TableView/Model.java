@@ -42,7 +42,9 @@ public class Model {
 	 */
 
 	public void addTreeToList(String name, double diameter, double hight, String treeSpecies, boolean isEverGreen) {
-			trees.add(new Tree(name, diameter, hight, treeSpecies, isEverGreen));
+			Tree tempTree = new Tree(name, diameter, hight, treeSpecies, isEverGreen);
+			trees.add(tempTree);
+			System.out.println("Temptree" + Tree.getId() );
 			
 	}
 

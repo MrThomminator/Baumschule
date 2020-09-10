@@ -13,11 +13,11 @@ public class Tree implements Serializable {
 	private double hight;
 	private String treeSpecies;
 	private Boolean isEverGreen;
-	private static int id;
+	private static int id = 0;
 	
 	public Tree(String name, double diameter, double hight, String treeSpecies, Boolean isEverGreen) {
 	id++;
-	this.id = id;
+	Tree.id = id;
 	this.name = name;
 	this.diameter = diameter;
 	this.hight = hight;
