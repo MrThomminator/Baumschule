@@ -8,11 +8,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import javafx.event.ActionEvent;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
-import javafx.stage.Window;
-
 public class Model {
 
 	/*
@@ -23,11 +18,7 @@ public class Model {
 	private double hight;
 	private String treeSpecies;
 	private Boolean isEverGreen;
-	private ListTreeController ltc;
-	private File file;
-	private FileChooser fileChooser;
-	private Window window;
-//	private int id;
+	private File file = null;
 
 	/*
 	 * Singleton Mode
@@ -55,50 +46,38 @@ public class Model {
 			
 	}
 
-	
-	
-	
 	/*
 	 * Serialisierungsbereich / Datei speichern, Datei einlesen.
 	 */
 	
-//	public void saveFileAs() {
-//
-//		if(file != null) {
-//			try(FileOutputStream fos = new FileOutputStream(file); ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-//				oos.writeObject(trees);
-//			} catch (Exception e) {
-//				System.err.println("Methode \"FileSaveAs\" im Model hat nicht ");
-//			}
-//		}
-//		
-//	}
-	
-	
-//	public void saveFile() {
-//		file = ltc.getFile();
-//			if(file != null) {
-//			try(FileOutputStream fos = new FileOutputStream(file); ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-//				oos.writeObject(trees);
-//			} catch (Exception e) {
-//				System.err.println("Methode \"FileSaveAs\" im Model hat nicht ");
-//			}
-//		}else {
-//			System.err.println("Methode saveFile hat nicht geklappt, keine File gefunden.");
-//		}
-//	}
-	
-	public void openFile() throws ClassNotFoundException {
-
-		fileChooser = new FileChooser();
-		fileChooser.getExtensionFilters().add(new ExtensionFilter("Textdateien", "*.txt"));
-		try {
-			
-			file = fileChooser.showSaveDialog(window);
-		} catch (Exception h) {
-			System.err.println("im Model Methode OpenFile ist mit Filechoosing was schief gelaufen");
+public void saveAsFile(File file) {
+	this.file = file;
+	if(file != null) {
+		try(FileOutputStream fos = new FileOutputStream(file, false); ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+			oos.writeObject(trees);
+		} catch (Exception g) {
+			System.err.println("Methode \"FileSaveAs\" im Model hat nicht ");
 		}
+	}
+}
+	
+	
+	public void saveFile() {
 		
+			if(file != null) {
+			try(FileOutputStream fos = new FileOutputStream(file); ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+				oos.writeObject(trees);
+			} catch (Exception e) {
+				System.err.println("Methode \"saveFile\" im Model hat nicht ");
+			}
+		}else {
+			System.out.println("kein File vorhanden");
+		}
+	}
+	
+	public void openFile(File file) throws ClassNotFoundException {
+		trees.clear();
+		this.file = file;		
 	
 		try(FileInputStream fis = new FileInputStream(file); ObjectInputStream ois = new ObjectInputStream(fis)) {
 			trees = (ArrayList<Tree>) ois.readObject();
@@ -111,13 +90,6 @@ public class Model {
 	public void newFile() {
 		trees.clear();
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	/*
 	 * Getter- and Setters
@@ -163,23 +135,11 @@ public class Model {
 		this.isEverGreen = isEverGreen;
 	}
 
-
-
 	public ArrayList<Tree> getTrees() {
 		return trees;
 	}
 
 	public void setTrees(ArrayList<Tree> trees) {
 		this.trees = trees;
-	}
-
-	public Window getWindow() {
-		return window;
-	}
-
-	public void setWindow(Window window) {
-		this.window = window;
-	}
-	
-	
+	}	
 }

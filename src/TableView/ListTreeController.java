@@ -80,9 +80,10 @@ public class ListTreeController implements Initializable {
 
 	public void deleteTree(ActionEvent e) {
 		ObservableList<Tree> selectedRows = table.getSelectionModel().getSelectedItems();
-		// we don't want to iterate on same collection on with we remove items
 		ArrayList<Tree> rows = new ArrayList<>(selectedRows);
+		rows.forEach(row -> model.getTrees().remove(row));
 		rows.forEach(row -> table.getItems().remove(row));
+		
 	}
 
 	public void chooseFile() {
@@ -98,68 +99,28 @@ public class ListTreeController implements Initializable {
 		
 	}
 
-//	public void openFile(ActionEvent e) throws ClassNotFoundException {
-//		ArrayList<Tree> temps = new ArrayList<Tree>();
-//		fileChooser = new FileChooser();
-//		fileChooser.getExtensionFilters().add(new ExtensionFilter("Textdateien", "*.txt"));
-//		try {
-//			Window window = menuBar.getScene().getWindow();
-//			file = fileChooser.showSaveDialog(window);
-//		} catch (Exception h) {
-//			System.err.println("Filechoosing was schief gelaufen");
-//		}
-//		
-//		try(FileInputStream fis = new FileInputStream(file); ObjectInputStream ois = new ObjectInputStream(fis)) {
-//			temps = (ArrayList<Tree>) ois.readObject();		
-//		} catch (IOException g) {
-//			g.printStackTrace();
-//		}catch (ClassNotFoundException e2) {
-//			e2.printStackTrace();
-//		}
-//		
-//		model.setTrees(temps);		
-//		table.getItems().addAll(model.getTrees());
-//	}
-
 	public void saveFile(ActionEvent e) {
-		
-		
-		
+			model.saveFile();
+			table.refresh();
+			
 	}
 
 	public void saveAsFile(ActionEvent e) {
-		fileChooser = new FileChooser();
-		fileChooser.getExtensionFilters().add(new ExtensionFilter("Textdateien", "*.txt"));
-		try {
-			Window window = menuBar.getScene().getWindow();
-			file = fileChooser.showSaveDialog(window);
-		} catch (Exception h) {
-			System.err.println("Filechoosing was schief gelaufen");
-		}
-		if(file != null) {
-			try(FileOutputStream fos = new FileOutputStream(file); ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-				oos.writeObject(model.getTrees());
-			} catch (Exception g) {
-				System.err.println("Methode \"FileSaveAs\" im Model hat nicht ");
-			}
-		}
+		chooseFile();
+		model.saveAsFile(file);
 	}
 	
-	public void openFile(ActionEvent e) {
-		try {
-			model.setWindow(menuBar.getScene().getWindow());
-			model.openFile();
-			
-		} catch (ClassNotFoundException e1) {
-			e1.printStackTrace();
-			System.out.println("OpenFile Methode im Controller schiefgelaufen");
-		}
+	public void openFile(ActionEvent e) throws ClassNotFoundException {
+		table.getItems().clear();
+		chooseFile();
+		model.openFile(file);
 		table.getItems().addAll(model.getTrees());
 	}
 
 	public void newFile(ActionEvent e) {
+		table.getItems().remove(model.getTrees());
 		model.newFile();
-		table.getItems().addAll(model.getTrees());
+		table.getItems().clear();
 	}
 
 	public void addTreeViewSwap(ActionEvent e) throws IOException {

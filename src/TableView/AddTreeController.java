@@ -75,11 +75,6 @@ public class AddTreeController implements Initializable{
 		msgLabel.setText("");
 
 		try {
-//			model.setdiameter(Double.valueOf(diameterTF.getText()));
-//			model.setHight(Double.valueOf(hightTF.getText()));
-//			model.setTreeSpecies(treeSpeciesCB.getSelectionModel().getSelectedItem());
-//			model.setIsEverGreen(Boolean.valueOf(treeSpeciesCB.getSelectionModel().getSelectedItem()));
-			
 
 			System.out.println("name: " + nameTF.getText());
 			System.out.println("Durchmesser: " + Double.valueOf(diameterTF.getText()));

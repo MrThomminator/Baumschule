@@ -76,10 +76,4 @@ public class Tree implements Serializable {
 	public static void setId(int id) {
 		Tree.id = id;
 	}
-	
-	
-	
-
-	
-	
 }
