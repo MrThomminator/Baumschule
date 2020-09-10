@@ -23,7 +23,7 @@
       <Label layoutX="21.0" layoutY="232.0" text="Immer grün?" />
       <CheckBox fx:id="everGreenYes" layoutX="158.0" layoutY="232.0" mnemonicParsing="false" />
       <Button fx:id="addTreeButton" layoutX="38.0" layoutY="321.0" mnemonicParsing="false" onAction="#createTree" text="Baum zur Baumschule hinzufügen" />
-      <Button layoutX="308.0" layoutY="321.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="150.0" text="Liste ansehen" />
+      <Button fx:id="ListViewButton" onAction="#SwapToListView" layoutX="308.0" layoutY="321.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="150.0" text="Liste ansehen" />
       <Label layoutX="383.0" layoutY="63.0" prefHeight="17.0" prefWidth="125.0" text="Identification Number" />
       <Label fx:id="IDlabel" layoutX="523.0" layoutY="63.0" text="ID" />
       <ImageView fx:id="treeImage" fitHeight="150.0" fitWidth="200.0" layoutX="358.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" />

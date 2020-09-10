@@ -1,25 +1,27 @@
 package TableView;
 
-public class Tree {
+import java.io.Serializable;
+
+public class Tree implements Serializable {
 	
 	/*
 	 * Attribute
 	 */
-	
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private double diameter;
 	private double hight;
 	private String treeSpecies;
 	private Boolean isEverGreen;
-	private static int id = 0;
+	private static int id;
 	
-	public Tree(String name, double diamter, double hight, String treeSpecies, Boolean isEvergreen) {
+	public Tree(String name, double diameter, double hight, String treeSpecies, Boolean isEverGreen) {
 	id++;
 	this.name = name;
-	this.diameter = diamter;
+	this.diameter = diameter;
 	this.hight = hight;
 	this.treeSpecies = treeSpecies;
-	this.isEverGreen = isEvergreen;
+	this.isEverGreen = isEverGreen;
 }
 
 		

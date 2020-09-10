@@ -1,13 +1,18 @@
 package TableView;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -15,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class AddTreeController implements Initializable{
 
@@ -33,6 +39,10 @@ public class AddTreeController implements Initializable{
 	
 	@FXML
 	Button addTreeButton;
+	
+	@FXML
+	Button ListViewButton;
+	
 	
 	String treeSpecies;
 	
@@ -57,9 +67,6 @@ public class AddTreeController implements Initializable{
 //			
 //		});
 		
-		
-		
-		
 	}
 	
 	public void createTree() throws Exception {
@@ -68,17 +75,23 @@ public class AddTreeController implements Initializable{
 		msgLabel.setText("");
 
 		try {
-			model.setDiameterTF(Double.valueOf(diameterTF.getText()));
-			model.setHight(Double.valueOf(hightTF.getText()));
-			msgLabel.setText("Baum wurde erfolgreich als Mitglied hinzugefügt");
-			model.setTreeSpecies(treeSpeciesCB.getSelectionModel().getSelectedItem());
-			model.setIsEverGreen(Boolean.valueOf(treeSpeciesCB.getSelectionModel().getSelectedItem()));
+//			model.setdiameter(Double.valueOf(diameterTF.getText()));
+//			model.setHight(Double.valueOf(hightTF.getText()));
+//			model.setTreeSpecies(treeSpeciesCB.getSelectionModel().getSelectedItem());
+//			model.setIsEverGreen(Boolean.valueOf(treeSpeciesCB.getSelectionModel().getSelectedItem()));
 			
-			
-			System.out.println("Durchmesser: " + diameterTF.getText());
-			System.out.println("höhe: " + hightTF.getText());
+
+			System.out.println("name: " + nameTF.getText());
+			System.out.println("Durchmesser: " + Double.valueOf(diameterTF.getText()));
+			System.out.println("höhe: " + Double.valueOf(hightTF.getText()));
 			System.out.println("Baumart: " + treeSpeciesCB.getSelectionModel().getSelectedItem());
-			System.out.println("IsEverGreen?: " + treeSpeciesCB.getSelectionModel().getSelectedItem());
+			System.out.println("Evergreen?" + everGreenYes.selectedProperty().getValue());
+			
+			model.addTreeToList(nameTF.getText(), Double.valueOf(diameterTF.getText()), Double.valueOf(hightTF.getText()), treeSpeciesCB.getSelectionModel().getSelectedItem(), everGreenYes.selectedProperty().getValue());
+			
+			
+			
+			msgLabel.setText("Baum wurde erfolgreich als Mitglied hinzugefügt");
 		} catch (NumberFormatException e) {
 			errorLabel.setText("Achtung: Sie haben ein falsches Zeichen eingegeben");
 		}catch (NullPointerException e) {
@@ -87,26 +100,16 @@ public class AddTreeController implements Initializable{
 			errorLabel.setText("Bitte Baumart auswählen");
 		}
 		
-		
-
-		
-		
-//		boolean selected;
-//		if(everGreenYes.isSelected()) {
-//			selected = true;
-//		}else {
-//			selected = false;
-//		}
-//		model.setIsEverGreen(selected);
-//		System.out.println(selected);
-//
-//		System.out.println(treeSpeciesCB.getSelectionModel().getSelectedItem());
-		
-		
-		
-		
 	}
 	
+	
+	public void SwapToListView(ActionEvent e) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("ListTreeView.fxml"));
+		Scene scene = new Scene(root);
+		Stage stage = (Stage) ListViewButton.getScene().getWindow();
+		stage.setScene(scene);
+		stage.show();
+	}
 	
 	
 	
