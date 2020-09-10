@@ -17,6 +17,7 @@ public class Tree implements Serializable {
 	
 	public Tree(String name, double diameter, double hight, String treeSpecies, Boolean isEverGreen) {
 	id++;
+	this.id = id;
 	this.name = name;
 	this.diameter = diameter;
 	this.hight = hight;
