@@ -24,7 +24,7 @@ public class main extends Application{
 	@Override
 	public void init() throws Exception {
 		
-		super.init();
+//		super.init();
 	}
 	
 	@Override
